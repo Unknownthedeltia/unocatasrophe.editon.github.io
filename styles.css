@@ -1,0 +1,491 @@
+/*Google Fontsの読み込み
+---------------------------------------------------------------------------*/
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+/* カスタムプロパティでテーマ管理 */
+:root {
+    --bg-color: #f0f0f0; /* ライトモード背景 */
+    --text-color: #333;   /* ライトモードテキスト */
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --hand-bg: rgba(255, 255, 255, 0.8);
+}
+
+body[data-theme="dark"] {
+    --bg-color: #1a1a1a; /* ダークモード背景 */
+    --text-color: #e0e0e0; /* ダークモードテキスト */
+    --shadow-color: rgba(255, 255, 255, 0.1);
+    --hand-bg: rgba(40, 40, 40, 0.8);
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Jetbrains mono','Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#game {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* カードデザイン */
+.card {
+    width: 90px;
+    height: 130px;
+    margin: 8px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 6px var(--shadow-color);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: medium;
+    -webkit-text-stroke: 1px; /* 縁取り */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: scale(1.1);
+    box-shadow: 5px 5px 10px var(--shadow-color);
+}
+
+/* 背景色ごとの文字色調整 */
+.card[style*="background-color: black"] { background-color: black; color: #fff; }
+.card[style*="background-color: aliceblue"] { background-color: aliceblue; color: #333; }
+.card[style*="background-color: darkcyan"] { background-color: darkcyan; color: #fff; }
+.card[style*="background-color: lightyellow"] { background-color: lightyellow; color: #333; }
+.card[style*="background-color: coral"] { background-color: coral; color: #fff; }
+.card[style*="background-color: dimgray"] { background-color: dimgray; color: #fff; }
+.card[style*="background-color: lavender"] { background-color: lavender; color: #333; }
+.card[style*="background-color: teal"] { background-color: teal; color: #fff; }
+.card[style*="background-color: lightgoldenrodyellow"] { background-color: lightgoldenrodyellow; color: #333; }
+.card[style*="background-color: tomato"] { background-color: tomato; color: #fff; }
+.card[style*="background-color: gray"] { background-color: gray; color: #fff; }
+.card[style*="background-color: lightsteelblue"] { background-color: lightsteelblue; color: #333; }
+.card[style*="background-color: darkslategray"] { background-color: darkslategray; color: #fff; }
+.card[style*="background-color: lemonchiffon"] { background-color: lemonchiffon; color: #333; }
+.card[style*="background-color: orangered"] { background-color: orangered; color: #fff; }
+.card[style*="background-color: darkgray"] { background-color: darkgray; color: #fff; }
+.card[style*="background-color: lightslategray"] { background-color: lightslategray; color: #fff; }
+.card[style*="background-color: darkgreen"] { background-color: darkgreen; color: #fff; }
+.card[style*="background-color: wheat"] { background-color: wheat; color: #333; }
+.card[style*="background-color: red"] { background-color: red; color: #fff; }
+.card[style*="background-color: silver"] { background-color: silver; color: #333; }
+.card[style*="background-color: slategray"] { background-color: slategray; color: #fff; }
+.card[style*="background-color: green"] { background-color: green; color: #fff; }
+.card[style*="background-color: burlywood"] { background-color: burlywood; color: #333; }
+.card[style*="background-color: crimson"] { background-color: crimson; color: #fff; }
+.card[style*="background-color: lightgray"] { background-color: lightgray; color: #333; }
+.card[style*="background-color: steelblue"] { background-color: steelblue; color: #fff; }
+.card[style*="background-color: forestgreen"] { background-color: forestgreen; color: #fff; }
+.card[style*="background-color: tan"] { background-color: tan; color: #333; }
+.card[style*="background-color: mediumvioletred"] { background-color: mediumvioletred; color: #fff; }
+.card[style*="background-color: gainsboro"] { background-color: gainsboro; color: #333; }
+.card[style*="background-color: royalblue"] { background-color: royalblue; color: #fff; }
+.card[style*="background-color: seagreen"] { background-color: seagreen; color: #fff; }
+.card[style*="background-color: khaki"] { background-color: khaki; color: #333; }
+.card[style*="background-color: deeppink"] { background-color: deeppink; color: #fff; }
+.card[style*="background-color: whitesmoke"] { background-color: whitesmoke; color: #333; }
+.card[style*="background-color: midnightblue"] { background-color: midnightblue; color: #fff; }
+.card[style*="background-color: mediumseagreen"] { background-color: mediumseagreen; color: #fff; }
+.card[style*="background-color: yellow"] { background-color: yellow; color: #333; }
+.card[style*="background-color: hotpink"] { background-color: hotpink; color: #fff; }
+.card[style*="background-color: white"] { background-color: white; color: #333; }
+.card[style*="background-color: navy"] { background-color: navy; color: #fff; }
+.card[style*="background-color: mediumaquamarine"] { background-color: mediumaquamarine; color: #333; }
+.card[style*="background-color: gold"] { background-color: gold; color: #333; }
+.card[style*="background-color: palevioletred"] { background-color: palevioletred; color: #fff; }
+.card[style*="background-color: snow"] { background-color: snow; color: #333; }
+.card[style*="background-color: darkblue"] { background-color: darkblue; color: #fff; }
+.card[style*="background-color: darkseagreen"] { background-color: darkseagreen; color: #333; }
+.card[style*="background-color: orange"] { background-color: orange; color: #fff; }
+.card[style*="background-color: pink"] { background-color: pink; color: #333; }
+.card[style*="background-color: ghostwhite"] { background-color: ghostwhite; color: #333; }
+.card[style*="background-color: mediumblue"] { background-color: mediumblue; color: #fff; }
+.card[style*="background-color: aquamarine"] { background-color: aquamarine; color: #333; }
+.card[style*="background-color: sandybrown"] { background-color: sandybrown; color: #333; }
+.card[style*="background-color: lightpink"] { background-color: lightpink; color: #333; }
+.card[style*="background-color: floralwhite"] { background-color: floralwhite; color: #333; }
+.card[style*="background-color: blue"] { background-color: blue; color: #fff; }
+.card[style*="background-color: palegreen"] { background-color: palegreen; color: #333; }
+.card[style*="background-color: darkorange"] { background-color: darkorange; color: #fff; }
+.card[style*="background-color: thistle"] { background-color: thistle; color: #333; }
+.card[style*="background-color: linen"] { background-color: linen; color: #333; }
+.card[style*="background-color: dodgerblue"] { background-color: dodgerblue; color: #fff; }
+.card[style*="background-color: lightgreen"] { background-color: lightgreen; color: #333; }
+.card[style*="background-color: goldenrod"] { background-color: goldenrod; color: #333; }
+.card[style*="background-color: magenta"] { background-color: magenta; color: #fff; }
+.card[style*="background-color: antiquewhite"] { background-color: antiquewhite; color: #333; }
+.card[style*="background-color: cornflowerblue"] { background-color: cornflowerblue; color: #fff; }
+.card[style*="background-color: springgreen"] { background-color: springgreen; color: #333; }
+.card[style*="background-color: peru"] { background-color: peru; color: #333; }
+.card[style*="background-color: fuchsia"] { background-color: fuchsia; color: #fff; }
+.card[style*="background-color: papayawhip"] { background-color: papayawhip; color: #333; }
+.card[style*="background-color: deepskyblue"] { background-color: deepskyblue; color: #333; }
+.card[style*="background-color: mediumspringgreen"] { background-color: mediumspringgreen; color: #333; }
+.card[style*="background-color: darkgoldenrod"] { background-color: darkgoldenrod; color: #fff; }
+.card[style*="background-color: violet"] { background-color: violet; color: #333; }
+.card[style*="background-color: blanchedalmond"] { background-color: blanchedalmond; color: #333; }
+.card[style*="background-color: lightskyblue"] { background-color: lightskyblue; color: #333; }
+.card[style*="background-color: lawngreen"] { background-color: lawngreen; color: #333; }
+.card[style*="background-color: chocolate"] { background-color: chocolate; color: #fff; }
+.card[style*="background-color: plum"] { background-color: plum; color: #333; }
+.card[style*="background-color: bisque"] { background-color: bisque; color: #333; }
+.card[style*="background-color: skyblue"] { background-color: skyblue; color: #333; }
+.card[style*="background-color: chartreuse"] { background-color: chartreuse; color: #333; }
+.card[style*="background-color: sienna"] { background-color: sienna; color: #fff; }
+.card[style*="background-color: orchid"] { background-color: orchid; color: #333; }
+.card[style*="background-color: moccasin"] { background-color: moccasin; color: #333; }
+.card[style*="background-color: lightblue"] { background-color: lightblue; color: #333; }
+.card[style*="background-color: greenyellow"] { background-color: greenyellow; color: #333; }
+.card[style*="background-color: saddlebrown"] { background-color: saddlebrown; color: #fff; }
+.card[style*="background-color: mediumorchid"] { background-color: mediumorchid; color: #fff; }
+.card[style*="background-color: navajowhite"] { background-color: navajowhite; color: #333; }
+.card[style*="background-color: powderblue"] { background-color: powderblue; color: #333; }
+.card[style*="background-color: lime"] { background-color: lime; color: #333; }
+.card[style*="background-color: maroon"] { background-color: maroon; color: #fff; }
+.card[style*="background-color: darkorchid"] { background-color: darkorchid; color: #fff; }
+.card[style*="background-color: peachpuff"] { background-color: peachpuff; color: #333; }
+.card[style*="background-color: paleturquoise"] { background-color: paleturquoise; color: #333; }
+.card[style*="background-color: limegreen"] { background-color: limegreen; color: #333; }
+.card[style*="background-color: darkred"] { background-color: darkred; color: #fff; }
+.card[style*="background-color: darkviolet"] { background-color: darkviolet; color: #fff; }
+.card[style*="background-color: mistyrose"] { background-color: mistyrose; color: #333; }
+.card[style*="background-color: lightcyan"] { background-color: lightcyan; color: #333; }
+.card[style*="background-color: yellowgreen"] { background-color: yellowgreen; color: #333; }
+.card[style*="background-color: brown"] { background-color: brown; color: #fff; }
+.card[style*="background-color: darkmagenta"] { background-color: darkmagenta; color: #fff; }
+.card[style*="background-color: lavenderblush"] { background-color: lavenderblush; color: #333; }
+.card[style*="background-color: cyan"] { background-color: cyan; color: #333; }
+.card[style*="background-color: darkolivegreen"] { background-color: darkolivegreen; color: #fff; }
+.card[style*="background-color: firebrick"] { background-color: firebrick; color: #fff; }
+.card[style*="background-color: purple"] { background-color: purple; color: #fff; }
+.card[style*="background-color: seashell"] { background-color: seashell; color: #333; }
+.card[style*="background-color: aqua"] { background-color: aqua; color: #333; }
+.card[style*="background-color: olivedrab"] { background-color: olivedrab; color: #fff; }
+.card[style*="background-color: indianred"] { background-color: indianred; color: #fff; }
+.card[style*="background-color: indigo"] { background-color: indigo; color: #fff; }
+.card[style*="background-color: oldlace"] { background-color: oldlace; color: #333; }
+.card[style*="background-color: turquoise"] { background-color: turquoise; color: #333; }
+.card[style*="background-color: olive"] { background-color: olive; color: #fff; }
+.card[style*="background-color: rosybrown"] { background-color: rosybrown; color: #333; }
+.card[style*="background-color: darkslateblue"] { background-color: darkslateblue; color: #fff; }
+.card[style*="background-color: ivory"] { background-color: ivory; color: #333; }
+.card[style*="background-color: mediumturquoise"] { background-color: mediumturquoise; color: #333; }
+.card[style*="background-color: darkkhaki"] { background-color: darkkhaki; color: #333; }
+.card[style*="background-color: darksalmon"] { background-color: darksalmon; color: #333; }
+.card[style*="background-color: blueviolet"] { background-color: blueviolet; color: #fff; }
+.card[style*="background-color: honeydew"] { background-color: honeydew; color: #333; }
+.card[style*="background-color: darkturquoise"] { background-color: darkturquoise; color: #333; }
+.card[style*="background-color: palegoldenrod"] { background-color: palegoldenrod; color: #333; }
+.card[style*="background-color: lightcoral"] { background-color: lightcoral; color: #333; }
+.card[style*="background-color: mediumpurple"] { background-color: mediumpurple; color: #fff; }
+.card[style*="background-color: mintcream"] { background-color: mintcream; color: #333; }
+.card[style*="background-color: lightseagreen"] { background-color: lightseagreen; color: #fff; }
+.card[style*="background-color: cornsilk"] { background-color: cornsilk; color: #333; }
+.card[style*="background-color: salmon"] { background-color: salmon; color: #333; }
+.card[style*="background-color: slateblue"] { background-color: slateblue; color: #fff; }
+.card[style*="background-color: azure"] { background-color: azure; color: #333; }
+.card[style*="background-color: cadetblue"] { background-color: cadetblue; color: #fff; }
+.card[style*="background-color: beige"] { background-color: beige; color: #333; }
+.card[style*="background-color: lightsalmon"] { background-color: lightsalmon; color: #333; }
+.card[style*="background-color: mediumslateblue"] { background-color: mediumslateblue; color: #fff; }
+
+/* 手札エリア */
+#player-hand, #cpu-hand {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: var(--hand-bg);
+    border-radius: 15px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+}
+
+#player-hand { border: 2px solid #457b9d; }
+#cpu-hand { border: 2px solid #e63946; }
+
+/* デッキと捨て札 */
+#deck, #discard {
+    margin: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+body[data-theme="dark"] #deck,
+body[data-theme="dark"] #discard {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+#deck { background-color: #f4a261; }
+#discard { background-color: #43aa8b; }
+
+/* ボタン */
+button {
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: #7209b7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+button:hover {
+    background-color: #9d4edd;
+    transform: translateY(-2px);
+}
+
+#draw-btn {
+    background-color: #ff70a6;
+}
+
+#draw-btn:hover {
+    background-color: #ff8fab;
+}
+
+#mode-toggle {
+    background-color: #555;
+}
+
+#mode-toggle:hover {
+    background-color: #777;
+}
+
+/* 色選択モーダル */
+#color-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    z-index: 1000;
+}
+
+body[data-theme="dark"] #color-modal {
+    background: #333;
+    color: #e0e0e0;
+}
+
+/* 前回のCSSに以下を追加・修正 */
+.color-btn {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    font-family: 'jetbrains mono';
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.color-btn:hover {
+    transform: scale(1.05);
+}
+
+/* 背景色ごとの設定 */
+.color-btn.aliceblue { background-color: aliceblue; color: #333; }
+.color-btn.darkcyan { background-color: darkcyan; color: #fff; }
+.color-btn.lightyellow { background-color: lightyellow; color: #333; }
+.color-btn.coral { background-color: coral; color: #fff; }
+.color-btn.dimgray { background-color: dimgray; color: #fff; }
+.color-btn.lavender { background-color: lavender; color: #333; }
+.color-btn.teal { background-color: teal; color: #fff; }
+.color-btn.lightgoldenrodyellow { background-color: lightgoldenrodyellow; color: #333; }
+.color-btn.tomato { background-color: tomato; color: #fff; }
+.color-btn.gray { background-color: gray; color: #fff; }
+.color-btn.lightsteelblue { background-color: lightsteelblue; color: #333; }
+.color-btn.darkslategray { background-color: darkslategray; color: #fff; }
+.color-btn.lemonchiffon { background-color: lemonchiffon; color: #333; }
+.color-btn.orangered { background-color: orangered; color: #fff; }
+.color-btn.darkgray { background-color: darkgray; color: #fff; }
+.color-btn.lightslategray { background-color: lightslategray; color: #fff; }
+.color-btn.darkgreen { background-color: darkgreen; color: #fff; }
+.color-btn.wheat { background-color: wheat; color: #333; }
+.color-btn.red { background-color: red; color: #fff; }
+.color-btn.silver { background-color: silver; color: #333; }
+.color-btn.slategray { background-color: slategray; color: #fff; }
+.color-btn.green { background-color: green; color: #fff; }
+.color-btn.burlywood { background-color: burlywood; color: #333; }
+.color-btn.crimson { background-color: crimson; color: #fff; }
+.color-btn.lightgray { background-color: lightgray; color: #333; }
+.color-btn.steelblue { background-color: steelblue; color: #fff; }
+.color-btn.forestgreen { background-color: forestgreen; color: #fff; }
+.color-btn.tan { background-color: tan; color: #333; }
+.color-btn.mediumvioletred { background-color: mediumvioletred; color: #fff; }
+.color-btn.gainsboro { background-color: gainsboro; color: #333; }
+.color-btn.royalblue { background-color: royalblue; color: #fff; }
+.color-btn.seagreen { background-color: seagreen; color: #fff; }
+.color-btn.khaki { background-color: khaki; color: #333; }
+.color-btn.deeppink { background-color: deeppink; color: #fff; }
+.color-btn.whitesmoke { background-color: whitesmoke; color: #333; }
+.color-btn.midnightblue { background-color: midnightblue; color: #fff; }
+.color-btn.mediumseagreen { background-color: mediumseagreen; color: #fff; }
+.color-btn.yellow { background-color: yellow; color: #333; }
+.color-btn.hotpink { background-color: hotpink; color: #fff; }
+.color-btn.white { background-color: white; color: #333; }
+.color-btn.navy { background-color: navy; color: #fff; }
+.color-btn.mediumaquamarine { background-color: mediumaquamarine; color: #333; }
+.color-btn.gold { background-color: gold; color: #333; }
+.color-btn.palevioletred { background-color: palevioletred; color: #fff; }
+.color-btn.snow { background-color: snow; color: #333; }
+.color-btn.darkblue { background-color: darkblue; color: #fff; }
+.color-btn.darkseagreen { background-color: darkseagreen; color: #333; }
+.color-btn.orange { background-color: orange; color: #fff; }
+.color-btn.pink { background-color: pink; color: #333; }
+.color-btn.ghostwhite { background-color: ghostwhite; color: #333; }
+.color-btn.mediumblue { background-color: mediumblue; color: #fff; }
+.color-btn.aquamarine { background-color: aquamarine; color: #333; }
+.color-btn.sandybrown { background-color: sandybrown; color: #333; }
+.color-btn.lightpink { background-color: lightpink; color: #333; }
+.color-btn.floralwhite { background-color: floralwhite; color: #333; }
+.color-btn.blue { background-color: blue; color: #fff; }
+.color-btn.palegreen { background-color: palegreen; color: #333; }
+.color-btn.darkorange { background-color: darkorange; color: #fff; }
+.color-btn.thistle { background-color: thistle; color: #333; }
+.color-btn.linen { background-color: linen; color: #333; }
+.color-btn.dodgerblue { background-color: dodgerblue; color: #fff; }
+.color-btn.lightgreen { background-color: lightgreen; color: #333; }
+.color-btn.goldenrod { background-color: goldenrod; color: #333; }
+.color-btn.magenta { background-color: magenta; color: #fff; }
+.color-btn.antiquewhite { background-color: antiquewhite; color: #333; }
+.color-btn.cornflowerblue { background-color: cornflowerblue; color: #fff; }
+.color-btn.springgreen { background-color: springgreen; color: #333; }
+.color-btn.peru { background-color: peru; color: #333; }
+.color-btn.fuchsia { background-color: fuchsia; color: #fff; }
+.color-btn.papayawhip { background-color: papayawhip; color: #333; }
+.color-btn.deepskyblue { background-color: deepskyblue; color: #333; }
+.color-btn.mediumspringgreen { background-color: mediumspringgreen; color: #333; }
+.color-btn.darkgoldenrod { background-color: darkgoldenrod; color: #fff; }
+.color-btn.violet { background-color: violet; color: #333; }
+.color-btn.blanchedalmond { background-color: blanchedalmond; color: #333; }
+.color-btn.lightskyblue { background-color: lightskyblue; color: #333; }
+.color-btn.lawngreen { background-color: lawngreen; color: #333; }
+.color-btn.chocolate { background-color: chocolate; color: #fff; }
+.color-btn.plum { background-color: plum; color: #333; }
+.color-btn.bisque { background-color: bisque; color: #333; }
+.color-btn.skyblue { background-color: skyblue; color: #333; }
+.color-btn.chartreuse { background-color: chartreuse; color: #333; }
+.color-btn.sienna { background-color: sienna; color: #fff; }
+.color-btn.orchid { background-color: orchid; color: #333; }
+.color-btn.moccasin { background-color: moccasin; color: #333; }
+.color-btn.lightblue { background-color: lightblue; color: #333; }
+.color-btn.greenyellow { background-color: greenyellow; color: #333; }
+.color-btn.saddlebrown { background-color: saddlebrown; color: #fff; }
+.color-btn.mediumorchid { background-color: mediumorchid; color: #fff; }
+.color-btn.navajowhite { background-color: navajowhite; color: #333; }
+.color-btn.powderblue { background-color: powderblue; color: #333; }
+.color-btn.lime { background-color: lime; color: #333; }
+.color-btn.maroon { background-color: maroon; color: #fff; }
+.color-btn.darkorchid { background-color: darkorchid; color: #fff; }
+.color-btn.peachpuff { background-color: peachpuff; color: #333; }
+.color-btn.paleturquoise { background-color: paleturquoise; color: #333; }
+.color-btn.limegreen { background-color: limegreen; color: #333; }
+.color-btn.darkred { background-color: darkred; color: #fff; }
+.color-btn.darkviolet { background-color: darkviolet; color: #fff; }
+.color-btn.mistyrose { background-color: mistyrose; color: #333; }
+.color-btn.lightcyan { background-color: lightcyan; color: #333; }
+.color-btn.yellowgreen { background-color: yellowgreen; color: #333; }
+.color-btn.brown { background-color: brown; color: #fff; }
+.color-btn.darkmagenta { background-color: darkmagenta; color: #fff; }
+.color-btn.lavenderblush { background-color: lavenderblush; color: #333; }
+.color-btn.cyan { background-color: cyan; color: #333; }
+.color-btn.darkolivegreen { background-color: darkolivegreen; color: #fff; }
+.color-btn.firebrick { background-color: firebrick; color: #fff; }
+.color-btn.purple { background-color: purple; color: #fff; }
+.color-btn.seashell { background-color: seashell; color: #333; }
+.color-btn.aqua { background-color: aqua; color: #333; }
+.color-btn.olivedrab { background-color: olivedrab; color: #fff; }
+.color-btn.indianred { background-color: indianred; color: #fff; }
+.color-btn.indigo { background-color: indigo; color: #fff; }
+.color-btn.oldlace { background-color: oldlace; color: #333; }
+.color-btn.turquoise { background-color: turquoise; color: #333; }
+.color-btn.olive { background-color: olive; color: #fff; }
+.color-btn.rosybrown { background-color: rosybrown; color: #333; }
+.color-btn.darkslateblue { background-color: darkslateblue; color: #fff; }
+.color-btn.ivory { background-color: ivory; color: #333; }
+.color-btn.mediumturquoise { background-color: mediumturquoise; color: #333; }
+.color-btn.darkkhaki { background-color: darkkhaki; color: #333; }
+.color-btn.darksalmon { background-color: darksalmon; color: #333; }
+.color-btn.blueviolet { background-color: blueviolet; color: #fff; }
+.color-btn.honeydew { background-color: honeydew; color: #333; }
+.color-btn.darkturquoise { background-color: darkturquoise; color: #333; }
+.color-btn.palegoldenrod { background-color: palegoldenrod; color: #333; }
+.color-btn.lightcoral { background-color: lightcoral; color: #333; }
+.color-btn.mediumpurple { background-color: mediumpurple; color: #fff; }
+.color-btn.mintcream { background-color: mintcream; color: #333; }
+.color-btn.lightseagreen { background-color: lightseagreen; color: #fff; }
+.color-btn.cornsilk { background-color: cornsilk; color: #333; }
+.color-btn.salmon { background-color: salmon; color: #333; }
+.color-btn.slateblue { background-color: slateblue; color: #fff; }
+.color-btn.azure { background-color: azure; color: #333; }
+.color-btn.cadetblue { background-color: cadetblue; color: #fff; }
+.color-btn.beige { background-color: beige; color: #333; }
+.color-btn.lightsalmon { background-color: lightsalmon; color: #333; }
+.color-btn.mediumslateblue { background-color: mediumslateblue; color: #fff; }
+
+/* 前回のCSSに加えて以下を追加 */
+#discard {
+    margin: 20px;
+    padding: 15px;
+    background-color: #43aa8b;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#discard-card {
+    margin-top: 10px;
+}
+
+#stopwatch {
+    margin: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+#log {
+    margin: 20px;
+    padding: 15px;
+    background-color: var(--hand-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    max-height: 200px;
+    overflow-y: auto;
+    width: 80%;
+    text-align: left;
+}
+
+#log-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
